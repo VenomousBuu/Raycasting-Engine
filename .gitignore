@@ -1,0 +1,14 @@
+# Machine-specific bytecode
+__pycache__/
+
+# Hidden system files
+.DS_Store
+Thumbs.db
+
+# Potential future environments
+venv/
+env/
+
+# Common IDE metadata
+.vscode/
+.idea/
