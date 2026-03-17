@@ -18,6 +18,7 @@ class Map:
 		for j, row in enumerate(self.mini_map):
 			for i, value in enumerate(row):
 				if value != '_':
+					value = int(value)
 					self.world_map[(i, j)] = value
 
 	def draw(self):

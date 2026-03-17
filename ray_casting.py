@@ -5,8 +5,33 @@ class RayCast:
 	def __init__(self, game):
 		self.game = game
 		self.raycasting_results = []
+		self.textures = self.game.object_renderer.wall_textures
+		self.objects_to_render = []
+
+	def get_objects_to_render(self):
+		self.objects_to_render = []
+		for ray, values in enumerate(self.raycasting_results):
+			depth, proj_height, texture, offset = values
+
+			if proj_height < HEIGHT:
+				wall_column = self.textures[texture].subsurface(
+					(offset * (TEXTURE_SIZE - SCALE), 0, SCALE, TEXTURE_SIZE)
+					)
+				wall_column = pygame.transform.scale(wall_column, (SCALE, proj_height))
+				wall_pos = (ray*SCALE, HALF_HEIGHT - proj_height//2)
+			else:
+				texture_height = TEXTURE_SIZE * HEIGHT / proj_height
+				wall_column = self.textures[texture].subsurface(
+					offset*(TEXTURE_SIZE-SCALE), HALF_TEXTURE_SIZE - texture_height//2, SCALE, texture_height
+					)
+				wall_column = pygame.transform.scale(wall_column, (SCALE, HEIGHT))
+				wall_pos = (ray*SCALE, 0)
+
+			self.objects_to_render.append((depth, wall_column, wall_pos))
+
 
 	def cast_rays(self):
+		self.raycasting_results = []
 		px, py = self.game.player.pos
 		world_x, world_y = self.game.player.world_pos
 
@@ -74,9 +99,9 @@ class RayCast:
 			#Projection
 			proj_height = SCREEN_DIST / (depth + 0.0001)
 
-			#Draw Walls
-			color = [256 / (1 + depth ** 5 * 0.00002)]*3
-			pygame.draw.rect(self.game.screen, color, (ray*SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
+			# #Draw Walls
+			# color = [256 / (1 + depth ** 5 * 0.00002)]*3
+			# pygame.draw.rect(self.game.screen, color, (ray*SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
 
 			#Add Ray_casting results
 			self.raycasting_results.append((depth, proj_height, texture ,offset))
@@ -84,4 +109,6 @@ class RayCast:
 			start_angle += FOV / NUM_OF_RAYS
 
 	def update(self):
-		self.cast_rays() 
+		self.cast_rays()
+		self.get_objects_to_render()
+
