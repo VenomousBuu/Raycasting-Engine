@@ -4,6 +4,7 @@ from settings import *
 class RayCast:
 	def __init__(self, game):
 		self.game = game
+		self.raycasting_results = []
 
 	def cast_rays(self):
 		px, py = self.game.player.pos
@@ -29,6 +30,7 @@ class RayCast:
 			for i in range(MAX_DEPTH):
 				tile_hor = int(hor_x), int(hor_y)
 				if tile_hor in self.game.map.world_map:
+					texture_hor = self.game.map.world_map[tile_hor]
 					break
 				hor_x += dx #To check next tile
 				hor_y += dy
@@ -47,6 +49,7 @@ class RayCast:
 			for i in range(MAX_DEPTH):
 				tile_vert = int(vert_x), int(vert_y)
 				if tile_vert in self.game.map.world_map:
+					texture_vert = self.game.map.world_map[tile_vert]
 					break
 				vert_x += dx
 				vert_y += dy
@@ -54,12 +57,29 @@ class RayCast:
 
 			#Chose the shortest depth.
 			if depth_vert < depth_hor:
-				depth = depth_vert
+				depth, texture = depth_vert, texture_vert
+				vert_y %= 1
+				offset = vert_y if cos_a > 0 else (1 - vert_y)
 			else:
-				depth = depth_hor
-			# Draw Rays for Debug
-			pygame.draw.line(self.game.screen, 'yellow', (px*TILE, py*TILE), (px*TILE+depth*cos_a*TILE, py*TILE+depth*sin_a*TILE), 2)
+				depth, texture = depth_hor, texture_hor
+				hor_x %= 1
+				offset = (1 - hor_x) if sin_a > 0 else hor_x
 
+			# # Draw Rays for Debug
+			# pygame.draw.line(self.game.screen, 'yellow', (px*TILE, py*TILE), (px*TILE+depth*cos_a*TILE, py*TILE+depth*sin_a*TILE), 2)
+
+			#To Fix Fisheye
+			depth *= math.cos(self.game.player.p_angle - start_angle)
+
+			#Projection
+			proj_height = SCREEN_DIST / (depth + 0.0001)
+
+			#Draw Walls
+			color = [256 / (1 + depth ** 5 * 0.00002)]*3
+			pygame.draw.rect(self.game.screen, color, (ray*SCALE, HALF_HEIGHT - proj_height // 2, SCALE, proj_height))
+
+			#Add Ray_casting results
+			self.raycasting_results.append((depth, proj_height, texture ,offset))
 
 			start_angle += FOV / NUM_OF_RAYS
 

@@ -31,8 +31,8 @@ class Main:
 
 	def draw(self):
 		self.screen.fill(GREY)
-		self.map.draw()
-		self.player.draw()
+		# self.map.draw()
+		# self.player.draw()
 
 	def update(self):
 		self.player.update()
