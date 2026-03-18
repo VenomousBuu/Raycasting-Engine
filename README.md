@@ -29,8 +29,6 @@ cd Raycasting-Engine
 - Added Textured Walls
     <img width="1365" height="767" alt="Screenshot 2026-03-18 121703" src="https://github.com/user-attachments/assets/331e1c21-9ff7-419f-b40c-0826cf6ae390" />
   	<img width="1365" height="767" alt="Screenshot 2026-03-18 122354" src="https://github.com/user-attachments/assets/d244ebc0-0238-4664-873f-82d0a4666dc9" /> 
-- Sprites(enemies, items)
-- Minimap
 
 ## Controls
 - W/A/S/D: To move forward/back and strafe left/right
