@@ -42,9 +42,11 @@ cd Raycasting-Engine
 - Draw rect for each ray to create walls
 - Find fixes for visual issues like Fisheye
 - Add Textures to walls. 
-- Impove performance by Optimisatio
+- Impove performance by Optimisation
 - Add static and animated sprites
 - Add Minimap
+- Add Weapons
+- Add Closing and Opening doors
 
 ## Technical Challenges
 - FishEye - Walls appeared curved. Fixed this by implementing cosine correction, by multiplying the raw depth by cosine of the relative angle at the edges of the FOV
