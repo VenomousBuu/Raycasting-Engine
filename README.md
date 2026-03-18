@@ -24,8 +24,10 @@ cd Raycasting-Engine
 		python main.py
 ## Features (so far)
 - DDA-based raycasting to detect walls. Wall coordinates are stored in a dictionary.
+	<img width="1344" height="767" alt="Screenshot 2026-03-18 121544" src="https://github.com/user-attachments/assets/fb2b8513-8995-44c5-b424-3b30b7f77f08" />
 - Basic player movement using WASD and rotation using q and e.
-- Textured Walls(to be added)
+- Added Textured Walls
+  	<img width="1365" height="767" alt="Screenshot 2026-03-18 122354" src="https://github.com/user-attachments/assets/d244ebc0-0238-4664-873f-82d0a4666dc9" /> 
 - Sprites(enemies, items)
 - Minimap
 
@@ -33,10 +35,7 @@ cd Raycasting-Engine
 - W/A/S/D: To move forward/back and strafe left/right
 - q/e: To rotate view left/right
 
-## Next steps
-- Draw rect for each ray to create walls
-- Find fixes for visual issues like Fisheye
-- Add Textures to walls. 
+## Next steps 
 - Impove performance by Optimisation
 - Add static and animated sprites
 - Add Minimap
@@ -45,6 +44,9 @@ cd Raycasting-Engine
 
 ## Technical Challenges
 - FishEye - Walls appeared curved. Fixed this by implementing cosine correction, by multiplying the raw depth by cosine of the relative angle at the edges of the FOV
+  <img width="1365" height="767" alt="Screenshot 2026-03-18 123204" src="https://github.com/user-attachments/assets/beb5e131-89a3-443b-beb9-496d2b1b04c6" />
+<img width="1365" height="767" alt="Screenshot 2026-03-18 123222" src="https://github.com/user-attachments/assets/0f76a7f3-606d-49dd-8318-cb7451fde353" />
+
 - Frame Rate would significantly suffer when player got Too close to the Wall. I fixed it by defining a fixed height for walls once the projected height was bigger than the window height
 
 ## Assets & Credits
