@@ -27,6 +27,7 @@ cd Raycasting-Engine
 	<img width="1344" height="767" alt="Screenshot 2026-03-18 121544" src="https://github.com/user-attachments/assets/fb2b8513-8995-44c5-b424-3b30b7f77f08" />
 - Basic player movement using WASD and rotation using q and e.
 - Added Textured Walls
+   	<img width="1365" height="767" alt="Screenshot 2026-03-18 121624" src="https://github.com/user-attachments/assets/45b92a09-1cc6-4471-a5ff-cfc822e190f2" />
   	<img width="1365" height="767" alt="Screenshot 2026-03-18 122354" src="https://github.com/user-attachments/assets/d244ebc0-0238-4664-873f-82d0a4666dc9" /> 
 - Sprites(enemies, items)
 - Minimap
