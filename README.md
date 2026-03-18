@@ -29,11 +29,6 @@ cd Raycasting-Engine
 - Sprites(enemies, items)
 - Minimap
 
-# How to Run
-1. Clone the repository
-2. Install Python 3.x and Pygame: "pip install pygame"
-3. Run 'python main.py' (or your relevant entry file)
-
 ## Controls
 - W/A/S/D: To move forward/back and strafe left/right
 - q/e: To rotate view left/right
