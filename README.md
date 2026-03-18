@@ -6,9 +6,9 @@ This is a simple 3D raycasting built with Pygame, inspired by Wolfenstein 3D.
 This engine demonstrates the application of trigonometry and linear algebra in real-time rendering. By utilizing the DDA algorithm, we achieve $O(n)$ complexity for ray-grid intersections, where $n$ is the maximum search depth, ensuring high performance even on low-end hardware.
 
 ## HOW TO RUN
-Pre_Requisites
-	- Python 3.x
-	- pygame library
+	Pre_Requisites
+		- Python 3.x
+		- pygame library
 
 	pip install pygame
 Installation
